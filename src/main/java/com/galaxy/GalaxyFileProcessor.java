@@ -25,7 +25,7 @@ public class GalaxyFileProcessor {
         for(String line : inputLines){
             if(inputProcessor.canProcess(line)){
                 inputProcessor.process(line);
-            }else if(questionHandler.canHandle(line)){
+            } else if(questionHandler.canHandle(line)){
                 String answer = questionHandler.findAnswer(line);
                 outputLines.add(answer);
             }

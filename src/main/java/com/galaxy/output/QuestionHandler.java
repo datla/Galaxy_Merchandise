@@ -24,9 +24,10 @@ public class QuestionHandler implements  Handler {
     @Override
     public String findAnswer(String question) {
         String answer = "";
+
         for(Handler handler : handlers) {
             if(handler.canHandle(question)){
-                handler.findAnswer(question);
+                answer = handler.findAnswer(question);
                 break;
             }
         }

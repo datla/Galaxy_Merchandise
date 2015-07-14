@@ -25,7 +25,10 @@ public class InputProcessor implements Processor {
 
     public void process(String input){
         for(Processor processor : processors){
-            processor.process(input);
+            if(processor.canProcess(input)){
+                processor.process(input);
+                break;
+            }
         }
     }
 }

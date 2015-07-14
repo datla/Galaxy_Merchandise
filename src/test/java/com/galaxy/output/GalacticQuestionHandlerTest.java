@@ -34,8 +34,7 @@ public class GalacticQuestionHandlerTest {
     @Test
     public void canHandle_should_return_false_given_invalid_input() {
         assertFalse(galacticQuestionHandler.canHandle("how many Credits is glob prok Silver ?"));
-        assertFalse(galacticQuestionHandler.canHandle(
-                "how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"));
+        assertFalse(galacticQuestionHandler.canHandle("how much wood could a woodchuck chuck if a woodchuck could chuck wood ?"));
     }
 
     @Test

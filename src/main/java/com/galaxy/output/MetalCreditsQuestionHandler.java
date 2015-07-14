@@ -8,10 +8,9 @@ import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.galaxy.GalacticWordsWithMetalParser.parseGalacticWords;
-import static com.galaxy.GalacticWordsWithMetalParser.parseMetalName;
+import static com.galaxy.GalacticWordsWithMetalStringParser.parseGalacticWords;
+import static com.galaxy.GalacticWordsWithMetalStringParser.parseMetalName;
 import static com.galaxy.datatypes.Metal.newMetal;
-import static java.math.BigDecimal.ROUND_CEILING;
 import static java.math.BigDecimal.ROUND_FLOOR;
 
 public class MetalCreditsQuestionHandler implements Handler {

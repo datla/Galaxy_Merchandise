@@ -3,8 +3,8 @@ package com.galaxy.input;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import static com.galaxy.GalacticWordsWithMetalParser.parseGalacticWords;
-import static com.galaxy.GalacticWordsWithMetalParser.parseMetalName;
+import static com.galaxy.GalacticWordsWithMetalStringParser.parseGalacticWords;
+import static com.galaxy.GalacticWordsWithMetalStringParser.parseMetalName;
 
 public class MetalCreditsLineParser {
     private static final Pattern creditsPattern = Pattern.compile("^(.*)\\s+is\\s(.*)\\s+Credits$");
