@@ -3,14 +3,13 @@ package com.galaxy.output;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.verifyZeroInteractions;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class QuestionHandlerTest {
@@ -52,5 +51,22 @@ public class QuestionHandlerTest {
         assertThat(answer, is("answer"));
         verifyZeroInteractions(mockInvalidQuestionHandler);
         verify(mockGalacticQuestionHandler).canHandle(question);
+    }
+
+    @Test
+    public void findAnswer_should_invoke_invalid_question_handler_at_the_last() {
+        String question = "question";
+
+        when(mockGalacticQuestionHandler.canHandle(question)).thenReturn(false);
+        when(mockMetalCreditsQuestionHandler.canHandle(question)).thenReturn(false);
+
+        questionHandler.findAnswer(question);
+
+        InOrder inOrder = inOrder(mockGalacticQuestionHandler, mockMetalCreditsQuestionHandler,
+                mockInvalidQuestionHandler);
+
+        inOrder.verify(mockGalacticQuestionHandler).canHandle(question);
+        inOrder.verify(mockMetalCreditsQuestionHandler).canHandle(question);
+        inOrder.verify(mockInvalidQuestionHandler).canHandle(question);
     }
 }

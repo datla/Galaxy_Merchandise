@@ -21,7 +21,7 @@ public class MetalCreditsCalculator {
 
     public BigDecimal calculateCredits(MetalCreditsLine metalCreditsLine) {
         String noOfMetalRoman = galacticToRomanConverter.convert(metalCreditsLine.galacticWords());
-        long noOfMetals = romanToDecimalConverter.convert(noOfMetalRoman);
+        int noOfMetals = romanToDecimalConverter.convert(noOfMetalRoman);
         
         BigDecimal credits = new BigDecimal(metalCreditsLine.credits()).divide(BigDecimal.valueOf(noOfMetals))
                 .setScale(2, ROUND_FLOOR);

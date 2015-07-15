@@ -40,7 +40,7 @@ public class GalacticQuestionHandlerTest {
     @Test
     public void findAnswer_should_return_valid_formatted_string() {
         when(mockGalacticToRomanConverter.convert("pish tegj glob glob")).thenReturn("XIV");
-        when(mockRomanToDecimalConverter.convert("XIV")).thenReturn(200L);
+        when(mockRomanToDecimalConverter.convert("XIV")).thenReturn(200);
 
         String answer = galacticQuestionHandler.findAnswer("how much is pish tegj glob glob ?");
 

@@ -2,6 +2,7 @@ package com.galaxy.context;
 
 import com.galaxy.FileUtility;
 import com.galaxy.business.MetalCreditsCalculator;
+import com.galaxy.business.RomanNumberValidator;
 import com.galaxy.business.RomanToDecimalConverter;
 import com.galaxy.input.*;
 import com.galaxy.output.GalacticQuestionHandler;
@@ -18,8 +19,9 @@ public class GalaxyTestContext {
     public GalaxyTestContext() {
         GalacticWordStore galacticWordStore = new GalacticWordStore();
         MetalCreditsStore metalCreditsStore = new MetalCreditsStore();
+        RomanNumberValidator romanNumberValidator = new RomanNumberValidator();
         GalacticToRomanConverter galacticToRomanConverter = new GalacticToRomanConverter(galacticWordStore);
-        RomanToDecimalConverter romanToDecimalConverter = new RomanToDecimalConverter();
+        RomanToDecimalConverter romanToDecimalConverter = new RomanToDecimalConverter(romanNumberValidator);
 
         GalacticWordProcessor galacticWordProcessor = new GalacticWordProcessor(galacticWordStore);
         MetalCreditsCalculator metalCreditsCalculator = new MetalCreditsCalculator(galacticToRomanConverter,

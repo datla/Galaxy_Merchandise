@@ -24,17 +24,17 @@ public class GalacticQuestionHandler implements Handler {
 
     @Override
     public String findAnswer(String question) {
-        String galacticWords = new QuestionParser().parseGalacticWords(question);
+        String galacticWords = QuestionParser.parseGalacticWords(question);
         String romanNumberString = galacticToRomanConverter.convert(galacticWords);
-        long decimalNumber = romanToDecimalConverter.convert(romanNumberString);
+        int decimalNumber = romanToDecimalConverter.convert(romanNumberString);
 
-        return new AnswerFormatter().fromat(galacticWords, decimalNumber);
+        return AnswerFormatter.fromat(galacticWords, decimalNumber);
     }
 
     private static class QuestionParser{
         private static final Pattern galacticQuestionPattern = Pattern.compile("^how much is (.*) \\?$");
 
-        String parseGalacticWords(String question){
+        static String parseGalacticWords(String question){
             Matcher matcher = galacticQuestionPattern.matcher(question);
             return matcher.find() ?  matcher.group(1) : "";
         }
@@ -43,7 +43,7 @@ public class GalacticQuestionHandler implements Handler {
     private static class AnswerFormatter {
         private static final String formatPattern = "%s is %s";
 
-        String fromat(String galacticWords, long decimalNumber){
+        static String fromat(String galacticWords, int decimalNumber){
             return String.format(formatPattern, galacticWords, String.valueOf(decimalNumber));
         }
     }

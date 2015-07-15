@@ -36,7 +36,7 @@ public class MetalCreditsCalculatorTest {
     public void calculateCredits_should_return_valid_credits_value() throws Exception {
         MetalCreditsLine metalCreditsLine = new MetalCreditsLine("pish pish", "Iron", "3910");
         when(mockGalacticToRomanConverter.convert("pish pish")).thenReturn("XX");
-        when(mockRomanToDecimalConverter.convert("XX")).thenReturn(20L);
+        when(mockRomanToDecimalConverter.convert("XX")).thenReturn(20);
 
         BigDecimal credits = metalCreditsCalculator.calculateCredits(metalCreditsLine);
         assertThat(credits.toString(), is("195.50"));

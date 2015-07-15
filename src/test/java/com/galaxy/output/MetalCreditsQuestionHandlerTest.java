@@ -46,13 +46,24 @@ public class MetalCreditsQuestionHandlerTest {
     }
 
     @Test
-    public void findAnswer_should_return_valid_formatted_string() {
+    public void findAnswer_should_return_valid_formatted_string_given_input_1() {
         when(mockGalacticToRomanConverter.convert("glob prok")).thenReturn("XIV");
-        when(mockRomanToDecimalConverter.convert("XIV")).thenReturn(20L);
+        when(mockRomanToDecimalConverter.convert("XIV")).thenReturn(20);
         when(mockMetalCreditsStore.getCredits(newMetal("Iron"))).thenReturn(new BigDecimal(100.45));
 
         String answer = metalCreditsQuestionHandler.findAnswer("how many Credits is glob prok Iron ?");
 
         assertThat(answer, is("glob prok Iron is 2009 Credits"));
+    }
+
+    @Test
+    public void findAnswer_should_return_valid_formatted_string_given_input_2() {
+        when(mockGalacticToRomanConverter.convert("glob prok")).thenReturn("IV");
+        when(mockRomanToDecimalConverter.convert("IV")).thenReturn(4);
+        when(mockMetalCreditsStore.getCredits(newMetal("Iron"))).thenReturn(new BigDecimal(14450));
+
+        String answer = metalCreditsQuestionHandler.findAnswer("how many Credits is glob prok Iron ?");
+
+        assertThat(answer, is("glob prok Iron is 57800 Credits"));
     }
 }

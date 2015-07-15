@@ -35,25 +35,25 @@ public class MetalCreditsQuestionHandler implements Handler {
 
     @Override
     public String findAnswer(String question) {
-        String galacticWordsWithMetal = new QuestionParser().parseGalacticWordsWithMetal(question);
+        String galacticWordsWithMetal = QuestionParser.parseGalacticWordsWithMetal(question);
 
         String metalName = parseMetalName(galacticWordsWithMetal);
         String galacticWords = parseGalacticWords(galacticWordsWithMetal);
 
         //TODO push this calculation logic to MetalCreditsCalculator
         String noOfMetalsRomanStr = galacticToRomanConverter.convert(galacticWords);
-        long noOfMetals = romanToDecimalConverter.convert(noOfMetalsRomanStr);
+        int noOfMetals = romanToDecimalConverter.convert(noOfMetalsRomanStr);
 
         BigDecimal metalCredits = metalCreditsStore.getCredits(newMetal(metalName));
         BigDecimal totalCredits = new BigDecimal(noOfMetals).multiply(metalCredits).setScale(2, ROUND_FLOOR).stripTrailingZeros();
 
-        return new AnswerFormatter().fromat(galacticWordsWithMetal, totalCredits);
+        return AnswerFormatter.fromat(galacticWordsWithMetal, totalCredits);
     }
 
     private static class QuestionParser{
         private static final Pattern metalCreditsQuestionPattern = Pattern.compile("^how many Credits is (.*) \\?$");
 
-        String parseGalacticWordsWithMetal(String question){
+        static String parseGalacticWordsWithMetal(String question){
             Matcher matcher = metalCreditsQuestionPattern.matcher(question);
             return matcher.find() ?  matcher.group(1) : "";
         }
@@ -62,8 +62,8 @@ public class MetalCreditsQuestionHandler implements Handler {
     private static class AnswerFormatter {
         private static final String formatPattern = "%s is %s Credits";
 
-        String fromat(String galacticWordsWithMetal, BigDecimal totalCredits){
-            return String.format(formatPattern, galacticWordsWithMetal, totalCredits.toString());
+        static String fromat(String galacticWordsWithMetal, BigDecimal totalCredits){
+            return String.format(formatPattern, galacticWordsWithMetal, totalCredits.toPlainString());
         }
     }
 }
