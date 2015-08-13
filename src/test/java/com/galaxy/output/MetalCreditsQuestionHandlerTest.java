@@ -1,21 +1,23 @@
 package com.galaxy.output;
 
-import com.galaxy.business.RomanToDecimalConverter;
-import com.galaxy.datatypes.Metal;
-import com.galaxy.input.GalacticToRomanConverter;
-import com.galaxy.input.MetalCreditsStore;
+import static com.galaxy.datatypes.Metal.newMetal;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.math.BigDecimal;
-
-import static com.galaxy.datatypes.Metal.newMetal;
-import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.when;
+import com.galaxy.business.RomanToDecimalConverter;
+import com.galaxy.input.GalacticToRomanConverter;
+import com.galaxy.input.MetalCreditsStore;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MetalCreditsQuestionHandlerTest {

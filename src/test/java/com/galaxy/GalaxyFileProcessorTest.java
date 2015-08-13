@@ -2,6 +2,7 @@ package com.galaxy;
 
 import com.galaxy.input.InputProcessor;
 import com.galaxy.output.QuestionHandler;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,7 +38,8 @@ public class GalaxyFileProcessorTest {
     @Test
     public void process_should_return_output_lines() throws Exception {
         String fileName = "testData";
-        List<String> inputLines = new ArrayList(){{
+        @SuppressWarnings("serial")
+		List<String> inputLines = new ArrayList<String>(){{
             add("input line 1");
             add("question 1");
         }};

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class MetalCreditsStore {
 
-    Map<Metal, BigDecimal> store = new HashMap();
+    Map<Metal, BigDecimal> store = new HashMap<Metal, BigDecimal>();
 
     public void addMetal(Metal metal, BigDecimal credits){
         store.put(metal, credits);

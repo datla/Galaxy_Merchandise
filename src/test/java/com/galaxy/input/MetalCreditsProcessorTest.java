@@ -1,26 +1,20 @@
 package com.galaxy.input;
 
-import com.galaxy.business.MetalCreditsCalculator;
-import com.galaxy.input.MetalCreditsLine;
-import com.galaxy.input.MetalCreditsLineParser;
-import com.galaxy.input.MetalCreditsProcessor;
-import com.galaxy.input.MetalCreditsStore;
+import static com.galaxy.datatypes.Metal.newMetal;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.math.BigDecimal;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.math.BigDecimal;
-
-import static com.galaxy.datatypes.Metal.newMetal;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import com.galaxy.business.MetalCreditsCalculator;
 
 @RunWith(MockitoJUnitRunner.class)
 public class MetalCreditsProcessorTest {
