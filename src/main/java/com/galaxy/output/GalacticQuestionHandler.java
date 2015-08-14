@@ -28,7 +28,7 @@ public class GalacticQuestionHandler implements Handler {
         String romanNumberString = galacticToRomanConverter.convert(galacticWords);
         int decimalNumber = romanToDecimalConverter.convert(romanNumberString);
 
-        return AnswerFormatter.fromat(galacticWords, decimalNumber);
+        return AnswerFormatter.format(galacticWords, decimalNumber);
     }
 
     private static class QuestionParser{
@@ -43,7 +43,7 @@ public class GalacticQuestionHandler implements Handler {
     private static class AnswerFormatter {
         private static final String formatPattern = "%s is %s";
 
-        static String fromat(String galacticWords, int decimalNumber){
+        static String format(String galacticWords, int decimalNumber){
             return String.format(formatPattern, galacticWords, String.valueOf(decimalNumber));
         }
     }

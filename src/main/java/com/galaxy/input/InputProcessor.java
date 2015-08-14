@@ -14,15 +14,16 @@ public class InputProcessor implements Processor {
 
     @Override
     public boolean canProcess(String input) {
-        //TODO refactor to avoid multiple return statements
+        boolean canProcess = false;
         for(Processor processor : processors){
             if(processor.canProcess(input)){
-                return true;
+            	canProcess = true;
             }
         }
-        return false;
+        return canProcess;
     }
 
+    @Override
     public void process(String input){
         for(Processor processor : processors){
             if(processor.canProcess(input)){

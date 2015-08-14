@@ -20,7 +20,6 @@ public class GalaxyFileProcessor {
 
     public List<String> process(String fileName) throws Exception {
         List<String> outputLines = new ArrayList<>();
-
         List<String> inputLines = fileUtility.loadLines(fileName);
         for(String line : inputLines){
             if(inputProcessor.canProcess(line)){
@@ -28,11 +27,11 @@ public class GalaxyFileProcessor {
             } else if(questionHandler.canHandle(line)){
                 String answer = questionHandler.findAnswer(line);
                 outputLines.add(answer);
+                System.out.println(answer);
             }
         }
-
-        System.out.println(outputLines);
-
+        //System.out.println(outputLines);
         return outputLines;
     }
+    
 }

@@ -24,7 +24,7 @@ public class GalaxyFileProcessorIntegrationTest {
 
         processor = new GalaxyFileProcessor(fileUtility, inputProcessor, questionHandler);
     }
-
+    
     @Test
     public void process() throws Exception {
 

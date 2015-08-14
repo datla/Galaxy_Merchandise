@@ -15,7 +15,6 @@ public class MetalCreditsProcessor implements Processor {
     public MetalCreditsProcessor(MetalCreditsStore metalCreditsStore,
             MetalCreditsLineParser metalCreditsLineParser,
             MetalCreditsCalculator metalCreditsCalculator) {
-
         this.metalCreditsStore = metalCreditsStore;
         this.metalCreditsLineParser = metalCreditsLineParser;
         this.metalCreditsCalculator = metalCreditsCalculator;

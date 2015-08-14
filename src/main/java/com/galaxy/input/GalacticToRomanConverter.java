@@ -20,7 +20,6 @@ public class GalacticToRomanConverter {
             RomanNumber romanNumber = galacticWordStore.findRomanNumber(GalacticWord.newGalacticWord(galacticWord));
             romanString.append(romanNumber.toString());
         }
-
         return romanString.toString();
     }
 }

@@ -47,7 +47,7 @@ public class MetalCreditsQuestionHandler implements Handler {
         BigDecimal metalCredits = metalCreditsStore.getCredits(newMetal(metalName));
         BigDecimal totalCredits = new BigDecimal(noOfMetals).multiply(metalCredits).setScale(2, ROUND_FLOOR).stripTrailingZeros();
 
-        return AnswerFormatter.fromat(galacticWordsWithMetal, totalCredits);
+        return AnswerFormatter.format(galacticWordsWithMetal, totalCredits);
     }
 
     private static class QuestionParser{
@@ -62,7 +62,7 @@ public class MetalCreditsQuestionHandler implements Handler {
     private static class AnswerFormatter {
         private static final String formatPattern = "%s is %s Credits";
 
-        static String fromat(String galacticWordsWithMetal, BigDecimal totalCredits){
+        static String format(String galacticWordsWithMetal, BigDecimal totalCredits){
             return String.format(formatPattern, galacticWordsWithMetal, totalCredits.toPlainString());
         }
     }

@@ -17,29 +17,20 @@ public class GalaxyTestContext {
     private final FileUtility fileUtility;
 
     public GalaxyTestContext() {
+    	
         GalacticWordStore galacticWordStore = new GalacticWordStore();
         MetalCreditsStore metalCreditsStore = new MetalCreditsStore();
         RomanNumberValidator romanNumberValidator = new RomanNumberValidator();
         GalacticToRomanConverter galacticToRomanConverter = new GalacticToRomanConverter(galacticWordStore);
         RomanToDecimalConverter romanToDecimalConverter = new RomanToDecimalConverter(romanNumberValidator);
-
         GalacticWordProcessor galacticWordProcessor = new GalacticWordProcessor(galacticWordStore);
-        MetalCreditsCalculator metalCreditsCalculator = new MetalCreditsCalculator(galacticToRomanConverter,
-                romanToDecimalConverter);
+        MetalCreditsCalculator metalCreditsCalculator = new MetalCreditsCalculator(galacticToRomanConverter,romanToDecimalConverter);
         MetalCreditsProcessor metalCreditsProcessor = new MetalCreditsProcessor(metalCreditsStore,new MetalCreditsLineParser(),metalCreditsCalculator);
-
+        GalacticQuestionHandler galacticQuestionHandler = new GalacticQuestionHandler(galacticToRomanConverter,romanToDecimalConverter);
+        MetalCreditsQuestionHandler metalCreditsQuestionHandler = new MetalCreditsQuestionHandler(metalCreditsStore,galacticToRomanConverter, romanToDecimalConverter);
+        
         inputProcessor = new InputProcessor(galacticWordProcessor,metalCreditsProcessor);
-
-
-        GalacticQuestionHandler galacticQuestionHandler = new GalacticQuestionHandler(galacticToRomanConverter,
-                romanToDecimalConverter);
-        MetalCreditsQuestionHandler metalCreditsQuestionHandler = new MetalCreditsQuestionHandler(metalCreditsStore,
-                galacticToRomanConverter, romanToDecimalConverter);
-
-        questionHandler = new QuestionHandler(galacticQuestionHandler,
-                metalCreditsQuestionHandler,
-                new InvalidQuestionHandler());
-
+        questionHandler = new QuestionHandler(galacticQuestionHandler,metalCreditsQuestionHandler,new InvalidQuestionHandler());
         fileUtility = new FileUtility();
 
     }

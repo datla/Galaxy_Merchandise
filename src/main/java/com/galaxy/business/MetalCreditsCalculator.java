@@ -14,8 +14,7 @@ public class MetalCreditsCalculator {
 
     public MetalCreditsCalculator(GalacticToRomanConverter galacticToRomanConverter,
             RomanToDecimalConverter romanToDecimalConverter) {
-
-        this.galacticToRomanConverter = galacticToRomanConverter;
+    	this.galacticToRomanConverter = galacticToRomanConverter;
         this.romanToDecimalConverter = romanToDecimalConverter;
     }
 
