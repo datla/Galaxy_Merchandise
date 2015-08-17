@@ -30,7 +30,6 @@ public class GalaxyFileProcessor {
                 System.out.println(answer);
             }
         }
-        //System.out.println(outputLines);
         return outputLines;
     }
     

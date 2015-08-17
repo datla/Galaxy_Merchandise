@@ -27,9 +27,7 @@ public class GalaxyFileProcessorIntegrationTest {
     
     @Test
     public void process() throws Exception {
-
         List<String> outputLines = processor.process("testData.txt");
-
         assertThat(outputLines.size(), is(5));
         assertThat(outputLines.get(0), is("pish tegj glob glob is 42"));
         assertThat(outputLines.get(1), is("glob prok Silver is 68 Credits"));

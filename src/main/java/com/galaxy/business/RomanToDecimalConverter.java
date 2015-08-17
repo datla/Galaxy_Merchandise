@@ -25,7 +25,7 @@ public class RomanToDecimalConverter {
 
         RomanNumber previousNumber = newRomanNumber(String.valueOf(romanChars[romanChars.length - 1]));
         decimalNumber += previousNumber.decimalValue();
-
+        // QUESTION ?
         for(int i=romanChars.length-2; i>=0; i--) {
             RomanNumber currentRomanNumber = newRomanNumber(String.valueOf(romanChars[i]));
             if(currentRomanNumber.decimalValue() < previousNumber.decimalValue()){
